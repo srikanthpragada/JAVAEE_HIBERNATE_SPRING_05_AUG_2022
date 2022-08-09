@@ -9,7 +9,8 @@ public class AddEmployee {
 
 	public static void main(String[] args) throws Exception {
 		
-		try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hr", "root", "mysql"))
+		try(Connection con = DriverManager.getConnection
+				("jdbc:mysql://localhost:3306/hr", "root", "mysql"))
 		{
 			Scanner s = new Scanner(System.in);
 			// Take input from user
@@ -25,7 +26,7 @@ public class AddEmployee {
 		    ps.setString(1,name);  
 		    ps.setInt(2, salary); 
 		    ps.setString(3, job);
-    		ps.executeUpdate(); // Execute DML 
+    		ps.executeUpdate(); // Execute DML - INSERT, DELETE, UPDATE 
 		    System.out.println("Added Employee Successfully!");
 		    ps.close();
 	     }// try

@@ -14,9 +14,9 @@ public class UpdateSalary {
 		PreparedStatement ps = con.prepareStatement
 				    ("update employees set salary = ? where id = ?");
 		ps.setInt(1, 550000); // salary 
-		ps.setInt(2, 12);  // id
+		ps.setInt(2, 2);  // id
 		
-		int count = ps.executeUpdate();
+		int count = ps.executeUpdate(); 
 		
 		System.out.printf("Updated %d row(s)", count);
 		ps.close();
