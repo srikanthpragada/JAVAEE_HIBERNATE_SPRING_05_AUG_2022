@@ -5,22 +5,18 @@ import javax.sql.rowset.RowSetProvider;
 
 public class CachedRowsetDemo {
 
-	public static void main(String[] args) throws Exception  {
-
+	public static void main(String[] args) throws Exception {
 		CachedRowSet rowSet = RowSetProvider.newFactory().createCachedRowSet();
 		rowSet.setUrl("jdbc:mysql://localhost:3306/hr");
 		rowSet.setUsername("root");
 		rowSet.setPassword("mysql");
 		rowSet.setCommand("select * from employees");
-		rowSet.execute();
+		rowSet.execute(); // connect and retrieve data
 
 		while (rowSet.next()) {
-            System.out.printf("%-20s %8d %-5s\n", 
-            		 rowSet.getString("fullname"), 
-            		 rowSet.getInt("salary"),
-            		 rowSet.getString("job"));
+			System.out.printf("%-20s %8d %-5s\n", rowSet.getString("fullname"), rowSet.getInt("salary"),
+					rowSet.getString("job"));
 		}
-
 	}
 
 }

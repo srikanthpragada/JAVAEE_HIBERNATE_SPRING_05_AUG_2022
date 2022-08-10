@@ -16,10 +16,11 @@ class SalaryPredicate implements Predicate {
 		this.salary = salary;
 	}
 
+	// True means rows is selected, false means row is omitted 
 	@Override
 	public boolean evaluate(RowSet rs) {
 		try {
-			System.out.println(rs.getInt("salary"));
+			// System.out.println(rs.getInt("salary"));
 			return rs.getInt("salary") > this.salary;
 		} catch (Exception ex) {
 			return false;

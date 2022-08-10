@@ -1,8 +1,8 @@
 package mysql;
 
-import java.sql.BatchUpdateException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BatchProcessDemo {
@@ -22,8 +22,8 @@ public class BatchProcessDemo {
 			for (int i = 0; i < uc.length; i++) {
 				System.out.println(i + ":" + uc[i]);
 			} // end of for loop
-		} catch (BatchUpdateException ex) {
-			System.out.println("Batch Update Exception :" + ex.getMessage());
+		} catch (SQLException ex) {
+			System.out.println("Exception :" + ex.getMessage());
 			con.rollback();
 		}
 	}
