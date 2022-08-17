@@ -14,12 +14,10 @@ public class DiscountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     public DiscountServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		
 		int price = Integer.parseInt(request.getParameter("price"));
 		int discount;
 		
@@ -31,5 +29,4 @@ public class DiscountServlet extends HttpServlet {
 		PrintWriter pw = response.getWriter(); 
 		pw.println("<h2>Discount = " + discount + "</h2>");
 	}
-
 }
