@@ -9,7 +9,7 @@
 <body>
 	<h1>Age Calculator</h1>
 	<form action="agecalculator.jsp">
-		Year of birth : <input type="number" name="year" required />
+		Year of birth : <input type="number" name="year" value="${param.year}" required />
 		<p></p>
 		<input type="submit" value="Get Age" />
 	</form>
