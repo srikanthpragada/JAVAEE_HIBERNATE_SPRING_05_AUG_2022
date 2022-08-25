@@ -8,6 +8,7 @@
 </head>
 <body>
  <h1>Session Count = ${applicationScope.sessioncount}</h1>
+ <h1>Title = ${applicationScope.title}</h1>
 
 </body>
 </html>
