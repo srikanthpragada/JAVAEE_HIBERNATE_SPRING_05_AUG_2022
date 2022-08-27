@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Info</title>
+<script src="jquery-3.6.1.min.js"></script>
+<script>
+   function getInfo() {
+	   // url, params, callback 
+  	   $.get("employeeinfo.jsp?id=" + $("#empid").val(), null, showInfo);
+   }
+   function showInfo(response) {
+	    response = response.trim();
+	    if (response === "none")
+	    	 $("#ename").text("Employee Not Found!");
+	    else
+	    	 $("#ename").text(response);
+   }
+</script>
+
+</head>
+<body>
+<h1>Employee Info</h1>
+Enter id : <input type="number" id="empid" /> 
+<button onclick="getInfo()">Get Info</button>
+<h3 id="ename"></h3>
+
+</body>
+</html>

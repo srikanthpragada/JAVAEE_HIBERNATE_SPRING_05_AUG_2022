@@ -19,15 +19,14 @@
   <listener>
     <listener-class>listeners.TestListener</listener-class>
   </listener>
-  <!-- 
-  <filter>
-    <display-name>LogFilter</display-name>
-    <filter-name>LogFilter</filter-name>
-    <filter-class>filters.LogFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>LogFilter</filter-name>
-    <url-pattern>*.jsp</url-pattern>
-  </filter-mapping>
-   -->
+  <servlet>
+    <description></description>
+    <display-name>EmployeeInfo</display-name>
+    <servlet-name>EmployeeInfo</servlet-name>
+    <servlet-class>servlets.EmployeeInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeInfo</servlet-name>
+    <url-pattern>/employeeInfo</url-pattern>
+  </servlet-mapping>
 </web-app>
