@@ -12,7 +12,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebFilter("*.jsp")
+// @WebFilter("*.jsp")
 public class LogFilter extends HttpFilter implements Filter {
 
 	public LogFilter() {

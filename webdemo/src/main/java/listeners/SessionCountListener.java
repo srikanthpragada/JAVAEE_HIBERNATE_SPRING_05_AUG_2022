@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
 
-@WebListener
+// @WebListener
 public class SessionCountListener implements ServletContextListener, HttpSessionListener {
 	int count = 0 ;
     public void sessionCreated(HttpSessionEvent se)  {

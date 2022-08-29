@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Details</title>
+<script src="jquery-3.6.1.min.js"></script>
+<script>
+	function getDetails() {
+		$("#employeeTable").hide()
+		// url, params, callback 
+		$.get("/webdemo/employeeInfo?id=" + $("#empid").val(), null, showInfo);
+	}
+	function showInfo(response) {
+		response = response.trim();
+		if (response === "none") {
+			alert("Sorry! Employee not found!");
+		} else {
+			emp = JSON.parse(response)  // JSON to JS object
+			// console.log(emp)
+			$("#ename").text(emp.name)
+			$("#job").text(emp.job)
+			$("#salary").text(emp.salary)
+			$("#employeeTable").show()
+		}
+	}
+</script>
+
+</head>
+<body>
+	<h1>Employee Details</h1>
+	Enter id :
+	<input type="number" id="empid" />
+	<button onclick="getDetails()">Get Details</button>
+    <p></p>
+	<table id="employeeTable" style="display:none" border="1" cellpadding="5px">
+		<tr>
+			<th>Employee Name</th>
+			<td><span id="ename"></span></td>
+		</tr>
+		<tr>
+			<th>Employee Job</th>
+			<td><span id="job"></span></td>
+		</tr>
+		<tr>
+			<th>Employee Salary</th>
+			<td><span id="salary"></span></td>
+		</tr>
+
+	</table>
+
+</body>
+</html>
