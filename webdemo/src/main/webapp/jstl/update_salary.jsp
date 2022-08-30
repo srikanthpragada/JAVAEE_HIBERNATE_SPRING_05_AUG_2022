@@ -2,8 +2,8 @@
 	pageEncoding="ISO-8859-1" import="java.sql.*"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
- 
+<%@include file="connect.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,13 +25,10 @@
 	<c:if test="${!empty param.id}">
 		<!-- catch exception into ex variable -->
 		<c:catch var="ex">
-			<!--  Connect to MySQL  -->
-			<sql:setDataSource var="mysql" driver="com.mysql.cj.jdbc.Driver"
-				url="jdbc:mysql://localhost:3306/hr" user="root" password="mysql" />
 
 			<sql:update dataSource="${mysql}" var="uc">
- 			update employees set salary = ? where id = ?
-            <sql:param value="${param.salary}" />
+ 			  update employees set salary = ? where id = ?
+                <sql:param value="${param.salary}" />
 				<sql:param value="${param.id}" />
 			</sql:update>
 			<c:choose>

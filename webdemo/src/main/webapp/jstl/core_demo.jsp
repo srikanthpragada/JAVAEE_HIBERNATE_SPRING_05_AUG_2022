@@ -18,7 +18,7 @@
 
 	Value of a =
 	<c:out value="${a}" />
-
+    <p></p>
 	<c:out value="<h1>Heading!</h1>" escapeXml="true" />
 
 	<ul>
