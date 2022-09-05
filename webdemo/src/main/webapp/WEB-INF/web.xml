@@ -16,11 +16,6 @@
   <session-config>
     <session-timeout>5</session-timeout>
   </session-config>
-  <!-- 
-  <listener>
-    <listener-class>listeners.TestListener</listener-class>
-  </listener>
-   -->
   <servlet>
     <description></description>
     <display-name>EmployeeInfo</display-name>
@@ -31,4 +26,5 @@
     <servlet-name>EmployeeInfo</servlet-name>
     <url-pattern>/employeeInfo</url-pattern>
   </servlet-mapping>
+  
 </web-app>
