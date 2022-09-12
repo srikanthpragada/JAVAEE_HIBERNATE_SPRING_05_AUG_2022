@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="manytomany.Employee" table="hb_employees">
+		<id name="id" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="name" length="20" type="java.lang.String" column="fullname" />
+		<set name="jobs" table="hb_job_history">
+			<key column="empid" />
+			<many-to-many class="manytomany.Job" column="jobid" />
+		</set>
+	</class>
+	<class name="manytomany.Job" table="hb_jobs">
+		<id name="id" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="title" column="title" type="java.lang.String" length="20" />
+		<set  inverse="true" name="employees" table="hb_job_history">
+			<key column="jobid" />
+			<many-to-many class="manytomany.Employee" column="empid" />
+		</set>
+	</class>
+
+</hibernate-mapping>
