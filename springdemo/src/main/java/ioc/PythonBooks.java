@@ -3,10 +3,11 @@ package ioc;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
+//@Lazy 
 public class PythonBooks implements Books {
 
 	public PythonBooks() {

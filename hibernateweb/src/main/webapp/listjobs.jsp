@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	import="java.util.*,dao.*,entities.*" pageEncoding="ISO-8859-1"%>
-<html>
-<body> 
+<html> 
+<body>  
 	<h2>Jobs</h2>
 	<ul>
 

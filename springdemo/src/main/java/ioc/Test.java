@@ -18,10 +18,12 @@ public class Test implements CommandLineRunner {
 		return books;
 	}
 
-	@Autowired()
+	@Autowired(required = false)
+	@Qualifier("javaBooks")
 	public void setBooks(Books books) {
 		this.books = books;
 		System.out.println("setBooks()");
+		System.out.println(this.books.hashCode());
 	}
 
 	public Test() {
@@ -30,8 +32,10 @@ public class Test implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Topic : " + this.books.getTopic());
-		for (String s : this.books.getBooks())
-			System.out.println(s);
+		if (this.books != null) {
+			System.out.println("Topic : " + this.books.getTopic());
+			for (String s : this.books.getBooks())
+				System.out.println(s);
+		}
 	}
 }
