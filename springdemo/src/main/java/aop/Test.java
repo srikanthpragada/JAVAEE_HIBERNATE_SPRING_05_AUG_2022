@@ -11,8 +11,8 @@ public class Test implements CommandLineRunner {
 	private Order order;
 
 	public void run(String... args) throws Exception {
-		System.out.println(order.getClass()); // Proxy, target is Order
-		order.placeOrder();
+		//System.out.println(order.getClass()); // Proxy, target is Order
+		// order.placeOrder();
 		order.cancelOrder();
 	}
 
