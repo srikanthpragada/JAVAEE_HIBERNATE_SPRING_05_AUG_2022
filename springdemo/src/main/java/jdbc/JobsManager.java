@@ -18,49 +18,25 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 public class JobsManager  {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-
-	public void showAverageSalary() {
-		Double avgSalary = jdbcTemplate.queryForObject
-				 ("select round(avg(salary)) from employees", Double.class);
-		System.out.println("Avgerage salary  = " + avgSalary);
-	}
 	
 	public void showJobCount() {
 		Integer count = jdbcTemplate.queryForObject("select count(*) from jobs", Integer.class);
 		System.out.println("Count = " + count);
 	}
 
-	public void listJobsWith7() {
-		List<Job> jobs = jdbcTemplate.query("select * from jobs", 
-			new RowMapper<Job>() {
-		    	@Override
-			    public Job mapRow(ResultSet rs, int rowNum) throws SQLException {
-				    return  new Job(rs.getString("id"),rs.getString("title"));
-			    }
-		    });
-
-		for (Job j : jobs)
-			System.out.println(j.getTitle());
+	public void showAverageSalary() {
+		Double avgSalary = jdbcTemplate.queryForObject
+				 ("select round(avg(salary)) from employees", Double.class);
+		System.out.println("Avgerage salary  = " + avgSalary);
 	}
 
-	public void listJobsWithLambda() {
-		List<Job> jobs = jdbcTemplate.query("select * from jobs",
-				// RowMapper (mapRow()) is implemented using Lambda Expression
-				(rs, rowNum) -> new Job(rs.getString("id"), rs.getString("title")));
-
-		for (Job j : jobs)
-			System.out.printf("%-10s  %s\n",j.getId(), j.getTitle());
+	public void updateMinSalary() {
+		int count = jdbcTemplate.update
+				("update jobs set minsal = ? where id = ?", 500000, "apro");
+		System.out.println("No. of rows updated : " + count);
 	}
-
-	public void listJobTitles() {
-		List<String> titles = jdbcTemplate.query("select title from jobs",
-				// RowMapper is implemented using Lambda Expression
-				(rs, rowNum) -> rs.getString("title"));
-
-		for (String title : titles)
-			System.out.println(title);
-	}
-
+	
+	
 	public void listJobTitlesWithJava7() {
 		List<String> titles = jdbcTemplate.query("select title from jobs",
 	     // Anonymous inner class to implement RowMapper		
@@ -78,11 +54,39 @@ public class JobsManager  {
 			System.out.println(title);
 	}
 
-	public void updateMinSalary() {
-		int count = jdbcTemplate.update
-				("update jobs set minsal = ? where id = ?", 500000, "jpro");
-		System.out.println("No. of rows updated : " + count);
+	public void listJobTitles() {
+		List<String> titles = jdbcTemplate.query("select title from jobs",
+				// RowMapper is implemented using Lambda Expression
+				(rs, rowNum) -> rs.getString("title"));
+
+		for (String title : titles)
+			System.out.println(title);
 	}
+
+	
+	public void listJobsWith7() {
+		List<Job> jobs = jdbcTemplate.query("select * from jobs", 
+			new RowMapper<Job>() {
+		    	@Override
+			    public Job mapRow(ResultSet rs, int rowNum) throws SQLException {
+				    return  new Job(rs.getString("id"),rs.getString("title"));
+			    }
+		    });
+
+		for (Job j : jobs)
+			System.out.println(j.getId() + " " + j.getTitle());
+	}
+
+	public void listJobsWithLambda() {
+		List<Job> jobs = jdbcTemplate.query("select * from jobs",
+				// RowMapper (mapRow()) is implemented using Lambda Expression
+				(rs, rowNum) -> new Job(rs.getString("id"), rs.getString("title")));
+
+		for (Job j : jobs)
+			System.out.printf("%-10s  %s\n",j.getId(), j.getTitle());
+	}
+
+	
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void updateTwo(int e1, int e2) {
