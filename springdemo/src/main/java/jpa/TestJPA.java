@@ -67,6 +67,6 @@ public class TestJPA implements CommandLineRunner {
 		// listCostlyJobs(600000);
 		// System.out.println(repo.getAvgMinSalary());
 		// listByTitle("Program");
-		System.out.println( repo.countByMinSal(500000));
+		// System.out.println( repo.countByMinSal(500000));
 	}
 }
