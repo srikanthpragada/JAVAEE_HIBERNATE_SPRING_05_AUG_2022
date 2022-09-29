@@ -27,5 +27,10 @@ public class HelloController {
 	  public String wish(@RequestParam(name = "name", required = false) String user) {
 	        return  "Hello " + user; 
 	  }
+	  
+	  @GetMapping("/hellojsp")
+	  public String sayHelloWithJsp() {
+		  return "hello";  // view name - hello.jsp
+	  }
 		 
 }
