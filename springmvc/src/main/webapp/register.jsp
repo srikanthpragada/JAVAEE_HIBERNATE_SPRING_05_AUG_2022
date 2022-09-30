@@ -14,10 +14,14 @@
 
 	<sf:form method="post" modelAttribute="user">
      Username <br />
-		<sf:input path="username" />
+		<sf:input path="username"  required="true" 
+		            title="Username to be used to login" />
+		<sf:errors path="username"/>
 		<p></p>
      Email <br />
-		<sf:input path="email" />
+		<sf:input path="email" required="true" 
+		           title="Email associated with account" />
+		<sf:errors path="email"/>
 		<p></p>
 		<input type="submit" value="Register" />
 	</sf:form>
