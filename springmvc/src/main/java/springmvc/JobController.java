@@ -30,10 +30,16 @@ public class JobController {
 
 	@PostMapping(value = "/addjob")
 	public String addJob(Job job, ModelMap model) {
-		jobRepo.save(job);
-		job = new Job();
 		model.addAttribute("job", job);
-		model.addAttribute("message", "Job has been added!");
+		try {
+			jobRepo.save(job);
+			// job = new Job();
+			model.addAttribute("message", "Job has been added!");
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			model.addAttribute("message", "Sorry! Could not add Job");
+		}
+
 		return "addjob";
 	}
 
